@@ -21,13 +21,13 @@ from rest_framework.response import Response
 
 
 @api_view(['GET'])
-def api_root(request):
+def project_root(request):
     return Response({app: request.build_absolute_uri(f'/{app}/') for app in settings.CUSTOM_APPS})
 
 
 urlpatterns = [
-    # Api Root
-    path('', api_root),
+    # Project Root
+    path('', project_root),
 
     # Admin Panel
     path('admin/', admin.site.urls),
