@@ -5,7 +5,7 @@ from .models import Snippet
 
 
 class SnippetSerializer(serializers.HyperlinkedModelSerializer):
-    # owner = serializers.ReadOnlyField(source='owner.username')
+    owner = serializers.ReadOnlyField(source='owner.username')
 
     class Meta:
         model = Snippet
@@ -13,7 +13,7 @@ class SnippetSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
-    # snippets = serializers.PrimaryKeyRelatedField(queryset=Snippet.objects.all(), many=True)
+    snippets = serializers.PrimaryKeyRelatedField(queryset=Snippet.objects.all(), many=True)
 
     class Meta:
         model = User
