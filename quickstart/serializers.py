@@ -2,15 +2,21 @@ from rest_framework import serializers
 from django.contrib.auth.models import Group, User
 
 
-class UserSerializer(serializers.ModelSerializer):
+class UserSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = User
-        fields = ['id', 'username', 'email', 'groups']
+        fields = ['url', 'username', 'email', 'groups']
+        extra_kwargs = {
+            'url': {'view_name': 'quickstart:user-detail'},
+        }
 
 
-class GroupSerializer(serializers.ModelSerializer):
+class GroupSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Group
-        fields = ['id', 'name']
+        fields = ['url', 'name']
+        extra_kwargs = {
+            'url': {'view_name': 'quickstart:group-detail'},
+        }
