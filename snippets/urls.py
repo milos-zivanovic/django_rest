@@ -4,7 +4,7 @@ from rest_framework.routers import DefaultRouter
 from .views import UserViewSet, SnippetViewSet
 
 
-app_name = 'snippets'
+# app_name = 'snippets'
 router = DefaultRouter()
 router.register('snippets', SnippetViewSet)
 router.register('users', UserViewSet)
