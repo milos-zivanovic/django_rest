@@ -4,12 +4,12 @@ from rest_framework import serializers
 from .models import Snippet
 
 
-class SnippetSerializer(serializers.HyperlinkedModelSerializer):
+class SnippetSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
 
     class Meta:
         model = Snippet
-        fields = ['url', 'id', 'title', 'code', 'linenos', 'language', 'style', 'owner']
+        fields = ['id', 'title', 'code', 'linenos', 'language', 'style', 'owner']
 
 
 class UserSerializer(serializers.ModelSerializer):
