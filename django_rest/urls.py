@@ -13,11 +13,22 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.conf import settings
 from django.contrib import admin
 from django.urls import include, path
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+
+
+@api_view(['GET'])
+def api_root(request):
+    return Response({app: request.build_absolute_uri(f'/{app}/') for app in settings.CUSTOM_APPS})
 
 
 urlpatterns = [
+    # Api Root
+    path('', api_root),
+
     # Admin Panel
     path('admin/', admin.site.urls),
 
