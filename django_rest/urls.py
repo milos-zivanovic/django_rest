@@ -25,8 +25,8 @@ urlpatterns = [
     path('api-auth/', include('rest_framework.urls')),
 
     # Quickstart App Routes
-    path('quickstart/', include('quickstart.urls'), namespace='quickstart'),
+    path('quickstart/', include('quickstart.urls', namespace='quickstart')),
 
     # Snippets App Routes
-    path('snippets/', include('snippets.urls'), namespace='snippets'),
+    path('snippets/', include('snippets.urls', namespace='snippets')),
 ]
